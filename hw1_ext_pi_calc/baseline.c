@@ -12,7 +12,7 @@ double compute_pi(size_t dt)
 	return pi * 4.0;
 }
 
-void main(){
+int main(){
 	clock_t begin = clock();
 	double result = compute_pi(128*1000000);
 	clock_t end = clock();
@@ -20,4 +20,6 @@ void main(){
 
 	printf("baseline_pi = %.10f\n",result);
 	printf("baseline_pi time = %f seconds\n",time);
+
+	return 0;
 }
