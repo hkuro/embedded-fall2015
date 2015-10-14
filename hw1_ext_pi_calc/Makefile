@@ -1,14 +1,15 @@
-CFLAGS = -Wall -mavx
+CC ?= gcc
+CFLAGS ?= -Wall -mavx
 
 .PHONY: clean default
 
 default: avx_simd baseline
 
 avx_simd: avx_simd.c
-	gcc $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $< -o $@
 
 baseline:baseline.c
-	gcc $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm avx_pi baseline
+	$(RM) avx_simd baseline
