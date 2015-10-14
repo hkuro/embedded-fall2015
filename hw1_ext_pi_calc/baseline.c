@@ -2,24 +2,25 @@
 #include <time.h>
 double compute_pi(size_t dt)
 {
-	size_t i;
-	double pi = 0.0;
-	double delta = 1.0 / dt;
-	for (i = 0; i < dt; i++) {
-		double x = (double) i / dt;
-		pi += delta / (1.0 + x * x);
-	}
-	return pi * 4.0;
+    size_t i;
+    double pi = 0.0;
+    double delta = 1.0 / dt;
+    for (i = 0; i < dt; i++) {
+        double x = (double) i / dt;
+        pi += delta / (1.0 + x * x);
+    }
+    return pi * 4.0;
 }
 
-int main(){
-	clock_t begin = clock();
-	double result = compute_pi(128*1000000);
-	clock_t end = clock();
-	double time = (double)(end-begin)/CLOCKS_PER_SEC;
+int main(int argc, char* argv[])
+{
+    int N = atoi(argv[1]);
+    clock_t begin = clock();
+    double result = compute_pi(N*1024*1024);
+    clock_t end = clock();
+    double time = (double)(end-begin)/CLOCKS_PER_SEC;
 
-	printf("baseline_pi = %.10f\n",result);
-	printf("baseline_pi time = %f seconds\n",time);
+    printf("%lf \n",time);
 
-	return 0;
+    return 0;
 }
